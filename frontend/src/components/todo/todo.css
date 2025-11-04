@@ -1,0 +1,226 @@
+/* Update Card Styling */
+.todo-update {
+    position: fixed;
+    top: 70px;
+    width : 80%;
+    height: 80vh;
+    margin: 1rem;
+    background: #fc7922;
+    border-radius: 10PX;
+    box-shadow: #00000092 0px 5px 15px 0px;
+    /* left :3.5rem; */
+    display: none;
+
+}
+
+.update-modal {
+  position: fixed;      /* Fix to viewport */
+  top: 50%;             /* Center vertically */
+  left: 50%;            /* Center horizontally */
+  transform: translate(-50%, -50%); /* Offset to truly center */
+  width: 80vw;          /* 80% of viewport width */
+  height: 100vh;        /* Full viewport height */
+  background: #ffffffdc;
+  z-index: 9999;        /* Ensure it’s on top */
+  padding: 2rem;
+  overflow-y: auto;     /* Scroll if content is taller than screen */
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.update-modal .title-input {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.update-txt {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.update-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 9998; /* just below modal */
+}
+
+.update-txt{
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ff6f00;
+    margin-bottom: 1rem;
+}
+
+/* Page Setup */
+.todo-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #fff7ef;
+  position: relative;
+}
+
+.todo-main {
+  margin-top: 0;
+  min-height: 100vh;
+  width: 100% !important;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;  /* align content to top instead of center */
+  padding-top: 2rem;           /* small spacing from top */
+}
+
+
+/* Input Card */
+.todo-inputs {
+  width: 80% !important;
+  background: rgb(250, 145, 59);
+  color: #fff;
+  padding: 30px 20px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s ease;
+  margin-top: 2rem;
+}
+
+/* Title Input */
+.title-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+  font-size: 1.2rem;
+  outline: none;
+  padding: 8px 5px;
+  transition: border-color 0.3s ease;
+}
+
+.title-input::placeholder {
+  color: rgba(255, 255, 255, 0.664);
+}
+
+/* Description + Button */
+.details {
+  max-height: 0;                
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: max-height 0.4s ease, transform 0.4s ease, padding 0.4s ease, margin-top 0.4s ease;
+  padding: 0 10px;             
+  margin-top: 0;
+}
+
+.details.show {
+  max-height: 500px;             
+  pointer-events: all;
+  transform: translateY(0);
+  padding: 10px;
+  margin-top: 2rem;
+}
+
+.details textarea {
+  width: 100%;
+  min-height: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  outline: none;
+  resize: vertical;
+  font-size: 1rem;
+}
+
+.details textarea::placeholder {
+  color: rgba(255, 254, 254, 0.723);
+}
+
+/* Add Button */
+.add-btn {
+  margin-top: 15px;
+  width: 50%;
+  background: linear-gradient(135deg, #fd9927, #e1ff00);
+  color: #000;
+  font-weight: 600;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #e7ff32, #fb9622);
+}
+/* ------------------------------------------------------------------------------------------- */
+/* Todo Cards Container */
+.todo-cards-container {
+    width: 80% !important;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+
+/* Example Card Styling */
+.todoCard {
+  margin-top: 2rem;
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 12px;
+    box-shadow: #0000001a 0px 5px 15px 0px;
+    transition: all 0.3s ease;
+}
+
+.todoCard:hover{
+    box-shadow: #c55f00aa 0px 5px 15px 0px;
+}
+
+.option{
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 3px;
+}
+
+.option:hover{
+    transform: scale(1.1);
+    box-shadow: #0000005f 0px 5px 15px 0px;
+}
+.editIcon{
+    color: #117d6b;
+    cursor: pointer;
+}
+.deleteIcon{
+    color: #ff6f00;
+    cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .todo-inputs {
+    width: 90%;
+    padding: 25px 18px;
+    margin-top: 2rem;
+  }
+
+  .title-input {
+    font-size: 1rem;
+  }
+
+  .details textarea {
+    font-size: 0.9rem;
+  }
+
+  .add-btn {
+    padding: 10px;
+  }
+}
+
