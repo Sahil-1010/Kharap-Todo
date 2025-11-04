@@ -31,7 +31,7 @@ const Navbar = () => {
               <li className="nav-item"><Link className="nav-link active btn-nav" to="/login">Sign In</Link></li>
           </>)}
           {isLoggedIn && (
-             <li className="nav-item user-png btn-nav"> <Link className="nav-link active id" to="/profile">
+             <li className="nav-item user-png"> <Link className="nav-link active id" to="/profile">
               <img
                 src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_hybrid&w=740&q=80"
                 alt="profile_image"

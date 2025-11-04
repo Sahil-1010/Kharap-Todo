@@ -10,19 +10,20 @@ const Home = () => {
   useEffect(() => {
     const fetchUsername = async () => {
       const id = sessionStorage.getItem('id');
-      if (!id) return; // not logged in
+      const welcomeShown = sessionStorage.getItem('welcomeShown');
+      if (!id || welcomeShown) return; // not logged in or already shown
 
       try {
         const res = await axios.get(`${window.location.origin}/api/v2/getUser/${id}`);
         if (res.data && res.data.user) {
           const username = res.data.user.username;
-          // sessionStorage.setItem('username', username);
-
+          sessionStorage.setItem('username', username);
           toast.success(`Welcome back, ${username}!`, {
             position: 'top-center',
             autoClose: 2000,
             theme: 'colored'
           });
+          sessionStorage.setItem('welcomeShown', 'true'); // mark as shown
         }
       } catch (err) {
         console.error('Error fetching username:', err);
@@ -34,6 +35,7 @@ const Home = () => {
 
   return (
     <div className="home d-flex justify-content-center align-items-center">
+      <ToastContainer />
       <div className="container d-flex justify-content-center align-items-center flex-column">
         <h1><GiBurningBook /> Keep your task ready</h1>
         <p>Create and manage your tasks easily</p>

@@ -52,21 +52,29 @@ const Todo = () => {
   };
 
   // Delete task
-  const del = async (CardId) => {
-    if (userId) {
-      try {
-        await axios.delete(`${window.location.origin}/api/v2/deleteTask/${CardId}`, {
-          data: { id: userId },
-        });
-        toast.success('Task Deleted Successfully 🥱');
-        fetchTasks(userId);
-      } catch (err) {
-        toast.error('Failed to delete task 😕');
-      }
-    } else {
-      toast.error('Sign in to Delete!');
+// Delete task
+const del = async (CardId) => {
+  if (userId) {
+    try {
+      await axios.delete(`${window.location.origin}/api/v2/deleteTask/${CardId}`, {
+        data: { id: userId },
+      });
+
+      // 🔥 instantly update UI before fetching again
+      setArray((prev) => prev.filter((task) => task._id !== CardId));
+
+      toast.success('Task Deleted Successfully 🥱');
+
+      // optional: refresh from backend to stay synced
+      setTimeout(() => fetchTasks(userId), 300);
+    } catch (err) {
+      toast.error('Failed to delete task 😕');
     }
-  };
+  } else {
+    toast.error('Sign in to Delete!');
+  }
+};
+
 
   // Edit handling
   const edit = (id) => {

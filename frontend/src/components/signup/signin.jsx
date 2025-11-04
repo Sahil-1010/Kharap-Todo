@@ -31,7 +31,7 @@ const Signin = () => {
       }, 300);
     } catch (err) {
       console.error("Login error:", err);
-      // alert("Login failed! Please check your credentials.");
+      alert("Login failed! Please check your credentials.");
     }
   };
 
